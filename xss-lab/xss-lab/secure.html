@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>XSS 安全靶场</title>
+</head>
+<body>
+    <h2>🟢 XSS 安全测试页（已修复）</h2>
+    <input type="text" id="inputBox" placeholder="输入内容">
+    <button onclick="showInput()">显示</button>
+    <div id="output" style="border:1px solid #ccc; padding:10px;"></div>
+    <script>
+        function showInput() {
+            const userInput = document.getElementById('inputBox').value;
+            // 修复：使用 textContent 彻底阻断 XSS
+            document.getElementById('output').textContent = userInput;
+        }
+    </script>
+</body>
+</html>
