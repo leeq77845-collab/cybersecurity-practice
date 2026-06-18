@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>XSS 漏洞靶场</title>
+</head>
+<body>
+    <h2>🔴 XSS 漏洞测试页（反射型）</h2>
+    <input type="text" id="inputBox" placeholder="输入内容">
+    <button onclick="showInput()">显示</button>
+    <div id="output" style="border:1px solid #ccc; padding:10px;"></div>
+    <script>
+        function showInput() {
+            const userInput = document.getElementById('inputBox').value;
+            // 漏洞点：使用 innerHTML 导致 XSS
+            document.getElementById('output').innerHTML = userInput;
+        }
+    </script>
+</body>
+</html>
